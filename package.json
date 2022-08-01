@@ -1,6 +1,6 @@
 {
     "name": "google-translate-api-next",
-    "version": "10.3.3",
+    "version": "0.1.0",
     "description": "A free and unlimited API for Google Translate",
     "main": "index.js",
     "scripts": {
@@ -8,7 +8,7 @@
         "test": "nyc ava",
         "start": "node example.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov > coverage.lcov && codecov",
-        "release": "npm run lint && npm test && np --yolo --no-release-draft"
+        "release": "np --yolo --no-release-draft"
     },
     "repository": {
         "type": "git",
