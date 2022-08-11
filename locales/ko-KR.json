@@ -1,26 +1,3 @@
 {
-    "name": "안녕하세요 세계",
-    "fact": "이 프로젝트를 유지하고 싶습니다",
-    "birthMonth": "화요일과 화요일 초록",
-    "name1": "안녕하세요, Aidan Welch",
-    "fact1": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth1": "화요일과 화요일 초록",
-    "name2": "안녕하세요, Aidan Welch",
-    "fact2": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth2": "화요일과 화요일 초록",
-    "name3": "안녕하세요, Aidan Welch",
-    "fact3": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth3": "화요일과 화요일 초록",
-    "name4": "안녕하세요, Aidan Welch",
-    "fact4": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth4": "화요일과 화요일 초록",
-    "name5": "안녕하세요, Aidan Welch",
-    "fact5": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth5": "화요일과 화요일 초록",
-    "name6": "안녕하세요, Aidan Welch",
-    "fact6": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth6": "화요일과 화요일 초록",
-    "name7": "안녕하세요, Aidan Welch",
-    "fact7": "이 프로젝트를 유지하고 있습니다",
-    "birthMonth7": "화요일과 화요일 초록"
+    "audit-state.AUDITING": "수락"
 }

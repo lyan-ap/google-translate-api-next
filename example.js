@@ -3,8 +3,8 @@ const fs = require("fs");
 // const translate = require("google-translate-api-next");
 const translate = require("./index");
 
-const targets = ["ja", "en", "ko"];
-const targetNames = ["ja-JP", "en-US", "ko-KR"];
+const targets = ["en", "ja", "ko"];
+const targetNames = ["en-US", "ja-JP", "ko-KR"];
 
 const dir = "./locales";
 

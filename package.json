@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/AidanWelch/google-translate-api.git"
+        "url": "https://github.com/lyan-ap/google-translate-api-next.git"
     },
     "keywords": [
         "translate",
@@ -29,16 +29,11 @@
         "extension",
         "web"
     ],
-    "author": {
-        "name": "Matheus Fernandes",
-        "email": "npm@matheus.top",
-        "url": "http://matheus.top"
-    },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/AidanWelch/google-translate-api/issues"
+        "url": "https://github.com/lyan-ap/google-translate-api-next/issues"
     },
-    "homepage": "https://github.com/AidanWelch/google-translate-api#readme",
+    "homepage": "https://github.com/lyan-ap/google-translate-api-next#readme",
     "devDependencies": {
         "ava": "^3.15.0",
         "codecov": "^3.8.1",
@@ -62,6 +57,7 @@
         }
     },
     "dependencies": {
-        "axios": "^0.27.2"
+        "axios": "^0.27.2",
+        "google-translate-api-x": "^10.3.4"
     }
 }

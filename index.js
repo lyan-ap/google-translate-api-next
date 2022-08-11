@@ -38,13 +38,22 @@ function translate(input, opts, requestOptions) {
             : opts.requestFunction;
 
     function requestFunction(url, requestOptions, body) {
-        const axiosconfig = {
+        const fetchinit = {
             ...requestOptions,
-            url: url,
-            data: body,
+            headers: new Headers(requestOptions.headers),
+            credentials: requestOptions.credentials || "omit",
+            body: body,
         };
-        return axios(axiosconfig).then((res) => res.data);
+        return fetch(url, fetchinit).then((res) => res.text());
     }
+    // function requestFunction(url, requestOptions, body) {
+    //     const axiosconfig = {
+    //         ...requestOptions,
+    //         url: url,
+    //         data: body,
+    //     };
+    //     return axios(axiosconfig).then((res) => res.data);
+    // }
 
     if (e) {
         return new Promise(function (resolve, reject) {
