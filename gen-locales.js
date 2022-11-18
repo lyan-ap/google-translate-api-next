@@ -50,6 +50,10 @@ function onMakeLocale() {
         if (err) throw err;
         const { en, jp, kr } = JSON.parse(data);
         const missedList = [en, jp, kr];
+        if (missedList.every((x) => !Object.keys(x).length)) {
+            console.info("passed");
+            return;
+        }
         for (let i = 0; i < missedList.length; i++) {
             const item = missedList[i];
             const result = await goTranslate(item, targets[i]);

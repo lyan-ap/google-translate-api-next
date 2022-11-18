@@ -7,7 +7,7 @@
         "lint": "xo",
         "helper": "ts-node -O '{\"module\": \"commonjs\"}' miss-helper.ts",
         "test": "nyc ava",
-        "start": "node example.js",
+        "start": "node gen-locales.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov > coverage.lcov && codecov",
         "release": "np --yolo --no-release-draft"
     },

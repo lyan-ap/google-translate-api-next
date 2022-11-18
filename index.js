@@ -172,7 +172,6 @@ function translate(input, opts, requestOptions) {
                                         return result;
                                     }
 
-                                    console.log("json: ", json);
                                     if (!json) {
                                         return {};
                                     }
@@ -181,9 +180,9 @@ function translate(input, opts, requestOptions) {
                                         json[1][0][0][5] === null
                                     ) {
                                         // translation not found, could be a hyperlink or gender-specific translation?
-                                        result.text = json[1][0][0][0];
+                                        result = json[1][0][0][0];
                                     } else {
-                                        result.text = json[1][0][0][5]
+                                        result = json[1][0][0][5]
                                             .map(function (obj) {
                                                 return obj[0];
                                             })
