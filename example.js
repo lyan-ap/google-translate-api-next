@@ -1,12 +1,20 @@
 const fs = require("fs");
 
-// const translate = require("google-translate-api-next");
 const translate = require("./index");
 
 const targets = ["en", "ja", "ko"];
 const targetNames = ["en-US", "ja-JP", "ko-KR"];
 
 const dir = "./locales";
+
+async function goTranslate(data, target) {
+    return await translate(data, {
+        from: "zh-CN",
+        to: target,
+        forceTo: true,
+        refresh: !true,
+    });
+}
 
 function onMakeLocales() {
     fs.readFile("./source.json", async (err, data) => {
@@ -37,7 +45,31 @@ function onMakeLocales() {
     });
 }
 
-onMakeLocales(); // run once
+function onMakeLocale() {
+    fs.readFile("./source.json", async (err, data) => {
+        if (err) throw err;
+        const { en, jp, kr } = JSON.parse(data);
+        const missedList = [en, jp, kr];
+        for (let i = 0; i < missedList.length; i++) {
+            const item = missedList[i];
+            const result = await goTranslate(item, targets[i]);
+            const name = targetNames[i];
+            fs.writeFile(
+                `${dir}/${name}.json`,
+                JSON.stringify(result, null, 4),
+                (err) => {
+                    if (err) throw err;
+                    console.log(`${name}.json file generated`);
+                }
+            );
+        }
+    });
+}
+// one diff json 3 locales
+// onMakeLocales();
+
+// 3 json 3 locales
+onMakeLocale();
 
 fs.watchFile(
     "source.json",

@@ -172,6 +172,10 @@ function translate(input, opts, requestOptions) {
                                         return result;
                                     }
 
+                                    console.log("json: ", json);
+                                    if (!json) {
+                                        return {};
+                                    }
                                     if (
                                         json[1][0][0][5] === undefined ||
                                         json[1][0][0][5] === null
