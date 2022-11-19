@@ -28,6 +28,13 @@ This fork of the fork [vitalets/google-translate-api](https://github.com/vitalet
 npm install google-translate-api-next
 ```
 
+## Usage Shell
+
+```shell
+
+
+```
+
 ## Usage
 
 From automatic language detection to English:

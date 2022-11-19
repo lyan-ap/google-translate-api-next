@@ -76,27 +76,27 @@ function onMakeLocale() {
 // 3 json 3 locales
 onMakeLocale();
 
-fs.watchFile(
-    "./source.json",
-    {
-        // Specify the use of big integers
-        // in the Stats object
-        bigint: false,
+// fs.watchFile(
+//     "./source.json",
+//     {
+//         // Specify the use of big integers
+//         // in the Stats object
+//         bigint: false,
 
-        // Specify if the process should
-        // continue as long as file is
-        // watched
-        persistent: true,
+//         // Specify if the process should
+//         // continue as long as file is
+//         // watched
+//         persistent: true,
 
-        // Specify the interval between
-        // each poll the file
-        interval: 2000,
-    },
-    (curr, prev) => {
-        console.log("updating...");
-        onMakeLocales();
-    }
-);
+//         // Specify the interval between
+//         // each poll the file
+//         interval: 2000,
+//     },
+//     (curr, prev) => {
+//         console.log("updating...");
+//         onMakeLocales();
+//     }
+// );
 
 // exec("yarn helper", (err, stdout, stderr) => {
 //     if (err) {

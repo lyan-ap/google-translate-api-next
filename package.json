@@ -38,6 +38,7 @@
     "devDependencies": {
         "ava": "^3.15.0",
         "codecov": "^3.8.1",
+        "commander": "^9.4.1",
         "coveralls": "^2.11.11",
         "husky": "^3.0.4",
         "np": "^7.6.0",
@@ -59,6 +60,7 @@
     },
     "dependencies": {
         "axios": "^0.27.2",
-        "google-translate-api-x": "^10.3.4"
+        "google-translate-api-x": "^10.3.4",
+        "inquirer": "^9.1.4"
     }
 }
