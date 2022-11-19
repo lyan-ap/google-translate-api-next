@@ -1,13 +1,13 @@
 {
-    "name": "google-translate-api-next",
-    "version": "0.1.0",
+    "name": "miss-helper",
+    "version": "0.0.1",
     "description": "A free and unlimited API for Google Translate",
-    "main": "index.js",
+    "main": "src/commander.js",
     "scripts": {
         "lint": "xo",
-        "helper": "ts-node -O '{\"module\": \"commonjs\"}' miss-helper.ts",
+        "miss-helper": "ts-node -O '{\"module\": \"commonjs\"}' ./src/miss-helper.ts",
         "test": "nyc ava",
-        "start": "node gen-locales.js",
+        "start": "node ./src/gen-locales.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov > coverage.lcov && codecov",
         "release": "np --yolo --no-release-draft"
     },

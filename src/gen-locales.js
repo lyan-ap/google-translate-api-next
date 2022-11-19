@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { exec } = require("child_process");
 
 const translate = require("./index");
 
@@ -59,7 +60,7 @@ function onMakeLocale() {
             const result = await goTranslate(item, targets[i]);
             const name = targetNames[i];
             fs.writeFile(
-                `${dir}/${name}.json`,
+                `./${dir}/${name}.json`,
                 JSON.stringify(result, null, 4),
                 (err) => {
                     if (err) throw err;
@@ -76,7 +77,7 @@ function onMakeLocale() {
 onMakeLocale();
 
 fs.watchFile(
-    "source.json",
+    "./source.json",
     {
         // Specify the use of big integers
         // in the Stats object
@@ -96,3 +97,14 @@ fs.watchFile(
         onMakeLocales();
     }
 );
+
+// exec("yarn helper", (err, stdout, stderr) => {
+//     if (err) {
+//         // node couldn't execute the command
+//         return;
+//     }
+
+//     // the *entire* stdout and stderr (buffered)
+//     console.log(`stdout: ${stdout}`);
+//     console.log(`stderr: ${stderr}`);
+// });
