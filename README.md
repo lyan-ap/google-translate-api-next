@@ -14,7 +14,16 @@
 
 ## Usage
 
+yarn or npm
+
 ```bash
+# add
+yarn add miss-helper
+
+# or
+yarn add miss-helper
+
+# use
 yarn miss-helper ['crowd']
 
 ```
