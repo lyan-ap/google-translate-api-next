@@ -6,25 +6,16 @@
         "lib": ["esnext", "dom"],
         "sourceMap": true,
         "baseUrl": ".",
-        "jsx": "react-jsx",
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
-        "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "noUnusedLocals": true,
         "allowJs": true,
         "skipLibCheck": true,
-        "experimentalDecorators": true,
         "strictNullChecks": false,
-        "noImplicitAny": true,
-        "strictFunctionTypes": true,
-        "strictBindCallApply": true,
         "alwaysStrict": false,
         "noImplicitThis": true,
         "paths": {
-            "@/*": ["./src/*"],
-            "@@/*": ["src/.umi/*"]
+            "@/*": ["./src/*"]
         }
     },
     "include": ["index.d.ts", "src/**/*", ".eslintrc.js", "config/**/*"],
@@ -34,7 +25,6 @@
         "build",
         "dist",
         "scripts",
-        "src/.umi/*",
         "webpack",
         "jest"
     ]

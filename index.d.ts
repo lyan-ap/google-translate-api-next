@@ -1,7 +1,7 @@
 export = googleTranslateApi;
 
 declare function googleTranslateApi(
-  query: string | string[] | {[key: string]: string},
+  query: string | string[] | { [key: string]: string },
   opts?: googleTranslateApi.IOptions,
   requestOptions?: AxiosRequestConfig<any> | object,
 ): Promise<googleTranslateApi.ITranslateResponse>;

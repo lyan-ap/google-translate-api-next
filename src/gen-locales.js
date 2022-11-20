@@ -1,7 +1,7 @@
 const fs = require("fs");
-const { exec } = require("child_process");
 
 const translate = require("./index");
+const { evalJsString } = require("./utils");
 
 const targets = ["en", "ja", "ko"];
 const targetNames = ["en-US", "ja-JP", "ko-KR"];
@@ -17,94 +17,34 @@ async function goTranslate(data, target) {
     });
 }
 
-function onMakeLocales() {
-    fs.readFile("./source.json", async (err, data) => {
-        if (err) throw err;
-        const json = JSON.parse(data);
+// cn -> en+jp+kr
+exports.onMakeLocales = async function onMakeLocales(stdout) {
+    if (err) throw err;
+    const json = evalJsString(stdout);
 
-        const res = await translate(json, {
-            from: "zh-CN",
-            to: targets,
-            forceTo: true,
-            refresh: !true,
-        });
-        const targetResults = await Promise.all(res);
-
-        targetNames.forEach((name, i) => {
-            const result = {};
-            const keys = Object.keys(json);
-            keys.forEach((key) => (result[key] = targetResults[i][key].text));
-            fs.writeFile(
-                `${dir}/${name}.json`,
-                JSON.stringify(result, null, 4),
-                (err) => {
-                    if (err) throw err;
-                    console.log(`${name}.json file generated`);
-                }
-            );
-        });
+    const res = await translate(json, {
+        from: "zh-CN",
+        to: targets,
+        forceTo: true,
+        refresh: !true,
     });
-}
+    const targetResults = await Promise.all(res);
+    console.log("targetResults: ", targetResults);
+};
 
-function onMakeLocale() {
-    fs.readFile("./source.json", async (err, data) => {
-        if (err) throw err;
-        const { en, jp, kr } = JSON.parse(data);
-        const missedList = [en, jp, kr];
-        if (missedList.every((x) => !Object.keys(x).length)) {
-            console.info("passed");
-            return;
-        }
-        for (let i = 0; i < missedList.length; i++) {
-            const item = missedList[i];
-            const result = await goTranslate(item, targets[i]);
-            const name = targetNames[i];
-            fs.writeFile(
-                `./${dir}/${name}.json`,
-                JSON.stringify(result, null, 4),
-                (err) => {
-                    if (err) throw err;
-                    console.log(`${name}.json file generated`);
-                }
-            );
-        }
-    });
-}
-// one diff json 3 locales
-// onMakeLocales();
-
-// 3 json 3 locales
-onMakeLocale();
-
-// fs.watchFile(
-//     "./source.json",
-//     {
-//         // Specify the use of big integers
-//         // in the Stats object
-//         bigint: false,
-
-//         // Specify if the process should
-//         // continue as long as file is
-//         // watched
-//         persistent: true,
-
-//         // Specify the interval between
-//         // each poll the file
-//         interval: 2000,
-//     },
-//     (curr, prev) => {
-//         console.log("updating...");
-//         onMakeLocales();
-//     }
-// );
-
-// exec("yarn helper", (err, stdout, stderr) => {
-//     if (err) {
-//         // node couldn't execute the command
-//         return;
-//     }
-
-//     // the *entire* stdout and stderr (buffered)
-//     console.log(`stdout: ${stdout}`);
-//     console.log(`stderr: ${stderr}`);
-// });
+// cn diff -> en+jp+kr
+exports.onMakeLocale = async function onMakeLocale(stdout) {
+    const json = evalJsString(stdout);
+    console.log("missed: ", json);
+    const { en, jp, kr } = json;
+    const missedList = [en, jp, kr];
+    if (missedList.every((x) => !Object.keys(x).length)) {
+        console.info("passed: no missed!");
+        return;
+    }
+    const res = missedList.map((item, i) => goTranslate(item, targets[i]));
+    const targetResults = (await Promise.all(res)).map((x, i) => ({
+        [targetNames[i]]: x,
+    }));
+    console.log("result: ", targetResults);
+};

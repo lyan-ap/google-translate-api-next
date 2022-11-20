@@ -1,5 +1,3 @@
-var axios = require("axios");
-
 var languages = require("./languages");
 
 function extract(key, res) {
@@ -46,14 +44,6 @@ function translate(input, opts, requestOptions) {
         };
         return fetch(url, fetchinit).then((res) => res.text());
     }
-    // function requestFunction(url, requestOptions, body) {
-    //     const axiosconfig = {
-    //         ...requestOptions,
-    //         url: url,
-    //         data: body,
-    //     };
-    //     return axios(axiosconfig).then((res) => res.data);
-    // }
 
     if (e) {
         return new Promise(function (resolve, reject) {

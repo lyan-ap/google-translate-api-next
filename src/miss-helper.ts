@@ -1,4 +1,4 @@
-import { getMissedKeys } from "./utils";
+const { getMissedKeys } = require("./utils");
 
 function check(root: string, isCrowd = false) {
     const options = {
@@ -21,7 +21,8 @@ function check(root: string, isCrowd = false) {
     }
     getMissedKeys(options, "source");
 }
-const args = process.argv.slice(2);
-const root = `${args[0] || "/Users/lyan/Documents/loonshots-web"}/src/locales`;
+const [crowd] = process.argv.slice(2);
+const root = `${process.cwd()}/src/locales`;
 
-check(root);
+check(root, crowd === 'crowd');
+
