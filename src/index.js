@@ -38,7 +38,7 @@ function translate(input, opts, requestOptions) {
     function requestFunction(url, requestOptions, body) {
         const fetchinit = {
             ...requestOptions,
-            headers: new Headers(requestOptions.headers),
+            headers: requestOptions.headers,
             credentials: requestOptions.credentials || "omit",
             body: body,
         };
