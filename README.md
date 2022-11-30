@@ -24,6 +24,7 @@ yarn add miss-helper
 yarn add miss-helper
 
 # use
-yarn miss-helper ['crowd']
+# keep: not append result to files, otherwise append
+yarn miss-helper ['crowd'] ['keep'|string]
 
 ```

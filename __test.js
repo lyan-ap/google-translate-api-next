@@ -12,5 +12,10 @@ const missed = `{
     kr: {
     },
 }`;
-onMakeLocale(missed);
-// onMakeLocale(missed, false);
+const [crowd, push] = process.argv.slice(2);
+
+if (push === "keep") {
+    console.log("same");
+}
+
+onMakeLocale(missed, push);

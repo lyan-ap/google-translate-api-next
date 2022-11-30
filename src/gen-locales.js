@@ -47,7 +47,7 @@ exports.onMakeLocale = async function onMakeLocale(stdout, push = true) {
 
     console.log("result: ", targetResults);
     // append result to files
-    if (push) {
+    if (push !== "keep") {
         for (let result of targetResults) {
             const [[name, linesObj]] = Object.entries(result);
             appendLines(linesObj, `./src/locales/${name}.ts`);
