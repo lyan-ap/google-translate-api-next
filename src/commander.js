@@ -12,7 +12,7 @@ if (!fs.existsSync(dir)) {
 global.appRoot = path.resolve(__dirname);
 
 let cmdStr = `ts-node -O '{\"module\": \"commonjs\"}' ${__dirname}/miss-helper.ts`;
-const [crowd] = process.argv.slice(2);
+const [crowd, push] = process.argv.slice(2);
 
 if (crowd === "crowd") {
     cmdStr += " crowd";
@@ -23,5 +23,5 @@ exec(cmdStr, (err, stdout, stderr) => {
         console.log("err: ", err);
         return;
     }
-    onMakeLocale(stdout);
+    onMakeLocale(stdout, push);
 });

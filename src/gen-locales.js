@@ -1,7 +1,5 @@
-const fs = require("fs");
-
 const translate = require("./index");
-const { evalJsString } = require("./utils");
+const { evalJsString, appendLines } = require("./utils");
 
 const targets = ["en", "ja", "ko"];
 const targetNames = ["en-US", "ja-JP", "ko-KR"];
@@ -33,7 +31,7 @@ exports.onMakeLocales = async function onMakeLocales(stdout) {
 };
 
 // cn diff -> en+jp+kr
-exports.onMakeLocale = async function onMakeLocale(stdout) {
+exports.onMakeLocale = async function onMakeLocale(stdout, push = true) {
     const json = evalJsString(stdout);
     console.log("missed: ", json);
     const { en, jp, kr } = json;
@@ -46,5 +44,13 @@ exports.onMakeLocale = async function onMakeLocale(stdout) {
     const targetResults = (await Promise.all(res)).map((x, i) => ({
         [targetNames[i]]: x,
     }));
+
     console.log("result: ", targetResults);
+    // append result to files
+    if (push) {
+        for (let result of targetResults) {
+            const [[name, linesObj]] = Object.entries(result);
+            appendLines(linesObj, `./src/locales/${name}.ts`);
+        }
+    }
 };

@@ -1,4 +1,4 @@
-// const fs = require("fs");
+const fs = require("fs");
 
 exports.getMissedKeys = function getMissedKeys(options, name) {
     const { cn = {}, en, jp, kr } = options;
@@ -33,4 +33,13 @@ exports.evalJsString = function evalJsString(str) {
     }
     if (typeof a === "object") return a;
     else return null;
+};
+
+exports.appendLines = function appendLines(linesObj, fileName) {
+    const lines = Object.entries(linesObj).map(([k, v]) => `  '${k}': '${v}',`);
+    if (lines.length) {
+        const data = fs.readFileSync(fileName, "utf8").split("\n");
+        data.splice(data.length - 2, 0, ...lines);
+        fs.writeFileSync(fileName, data.join("\n"), "utf8");
+    }
 };
